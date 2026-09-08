@@ -1,0 +1,2101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #050508;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.purple-text {
+  color: #a855f7;
+  font-weight: 800;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+  min-height: 65px;
+  padding: 0 3%;
+  display: flex;
+  align-items: center;
+  background: #050508;
+  border-bottom: 1px solid #121118;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-dash {
+  color: #444444;
+}
+
+.logo-country {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+
+/* NAV */
+
+.nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin: 0 35px;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.nav-links a:hover {
+  color: #a855f7;
+}
+
+
+/* SAĞ TARAF */
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-button,
+.login-button,
+.profile-button {
+  border: 1px solid #252430;
+  background: #0d0c12;
+  color: #ffffff;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.search-button {
+  width: 36px;
+  height: 36px;
+}
+
+.login-button {
+  height: 36px;
+  padding: 0 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.login-button:hover,
+.search-button:hover {
+  border-color: #8b5cf6;
+  color: #c4a5ff;
+}
+
+
+/* PROFİL */
+
+.profile-area {
+  position: relative;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 5px;
+}
+
+.profile-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #6d28d9;
+}
+
+.profile-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 48px;
+  width: 260px;
+  padding: 10px;
+  background: #09090d;
+  border: 1px solid #24212d;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+}
+
+.profile-menu.active {
+  display: block;
+}
+
+.profile-menu-head {
+  padding: 8px 10px;
+  border-bottom: 1px solid #1d1b24;
+}
+
+.profile-menu-head strong,
+.profile-menu-head small {
+  display: block;
+}
+
+.profile-menu-head small {
+  color: #777777;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.profile-menu button {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  background: none;
+  color: #cccccc;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-menu button:hover {
+  background: #15131d;
+  color: #ffffff;
+}
+
+.logout-button {
+  color: #d08a8a !important;
+}
+
+
+/* ARAMA */
+
+.search-box {
+  display: none;
+  position: fixed;
+  top: 75px;
+  right: 3%;
+  width: 340px;
+  max-height: 450px;
+  overflow: auto;
+  padding: 12px;
+  background: #09090d;
+  border: 1px solid #1c1c22;
+  border-radius: 10px;
+  z-index: 9999;
+  box-shadow: 0 15px 40px rgba(0,0,0,.5);
+}
+
+.search-box.active {
+  display: block;
+}
+
+.search-container {
+  display: flex;
+  gap: 8px;
+}
+
+.search-container input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 12px;
+  background: #050508;
+  color: #ffffff;
+  border: 1px solid #252430;
+  border-radius: 7px;
+  outline: none;
+}
+
+.search-container input:focus {
+  border-color: #8b5cf6;
+}
+
+.search-close {
+  width: 40px;
+  background: #111018;
+  color: #ffffff;
+  border: 1px solid #252430;
+  border-radius: 7px;
+}
+
+.search-results {
+  margin-top: 10px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background: #15141d;
+}
+
+.search-result-item img {
+  width: 43px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.search-result-info strong {
+  display: block;
+  font-size: 13px;
+}
+
+.search-result-info small {
+  color: #777777;
+  font-size: 10px;
+}
+
+.search-empty {
+  padding: 18px;
+  text-align: center;
+  color: #777777;
+  font-size: 12px;
+}
+
+
+/* LOGIN */
+
+.login-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-modal.active {
+  display: flex;
+}
+
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  backdrop-filter: blur(6px);
+}
+
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: min(440px, 95vw);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 34px;
+  background: #09090d;
+  border: 1px solid #292532;
+  border-radius: 16px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.7);
+}
+
+.login-close {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #292532;
+  border-radius: 50%;
+  background: #111018;
+  color: #ffffff;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #1d1b24;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #777777;
+  cursor: pointer;
+}
+
+.auth-tab.active {
+  color: #ffffff;
+  border-bottom-color: #8b5cf6;
+}
+
+.auth-form h2 {
+  margin: 8px 0;
+}
+
+.auth-form > p {
+  color: #777777;
+  font-size: 11px;
+}
+
+.auth-form label {
+  display: block;
+  margin: 14px 0 6px;
+  color: #aaaaaa;
+  font-size: 10px;
+}
+
+.auth-form > input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  background: #050508;
+  color: #ffffff;
+  border: 1px solid #24212d;
+  border-radius: 7px;
+  outline: none;
+}
+
+.auth-form > input:focus {
+  border-color: #8b5cf6;
+}
+
+.auth-main-button,
+.google-button {
+  width: 100%;
+  height: 43px;
+  margin-top: 18px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.auth-main-button {
+  background: #7c3aed;
+  border: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.google-button {
+  background: #111018;
+  color: #ffffff;
+  border: 1px solid #292532;
+}
+
+.auth-switch {
+  text-align: center !important;
+}
+
+.auth-switch button {
+  border: 0;
+  background: none;
+  color: #a855f7;
+  cursor: pointer;
+}
+
+
+/* HERO */
+
+.hero {
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 60px 7%;
+  overflow: hidden;
+}
+
+.hero-wallpaper {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,8,.9),
+      rgba(5,5,8,.33)
+    ),
+    url('https://i.pinimg.com/736x/aa/0a/29/aa0a29f8cd2c15a11b7ca876df732eed.jpg')
+    center / cover no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.hero h2 {
+  font-size: 22px;
+}
+
+.hero p {
+  color: #dddddd;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.primary {
+  background: #8b5cf6;
+}
+
+.secondary {
+  border: 1px solid #555565;
+  background: rgba(5,5,8,.33);
+}
+
+
+/* SECTIONS */
+
+.section,
+.info-section,
+.page {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #14131c;
+}
+
+.section-heading span,
+.info-section > span,
+.page-header > span,
+.anime-detail-info > span,
+.comments-header > span {
+  color: #8b5cf6;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  margin: 4px 0 0;
+}
+
+
+/* HABERLER */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.news-card {
+  background: #09090d;
+  border: 1px solid #191822;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.news-image {
+  height: 140px;
+  display: grid;
+  place-items: center;
+  background: #111018;
+  color: #666666;
+  font-weight: 700;
+}
+
+.news-content {
+  padding: 16px;
+}
+
+.news-content p {
+  color: #777777;
+  font-size: 13px;
+}
+
+
+/* ANİMELER */
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.anime-card {
+  display: flex;
+  min-height: 210px;
+  background: #09090b;
+  border: 1px solid #1c1c22;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.anime-card:hover {
+  border-color: #7c3aed;
+  transform: translateY(-3px);
+}
+
+.anime-cover {
+  width: 58%;
+  min-height: 210px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.anime-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #6d28d9;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.anime-card-info {
+  width: 42%;
+  padding: 18px 13px;
+  background: #050507;
+}
+
+.anime-card-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.anime-card-info p {
+  color: #777777;
+  font-size: 12px;
+}
+
+
+/* DEVAM ET */
+
+.continue-card {
+  display: flex;
+  min-height: 200px;
+  background: #0b0b10;
+  border: 1px solid #211f2c;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.continue-cover {
+  width: 330px;
+  background-size: cover;
+  background-position: center;
+}
+
+.continue-info {
+  flex: 1;
+  padding: 25px;
+}
+
+.continue-progress {
+  height: 5px;
+  background: #292731;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.continue-progress-bar {
+  height: 100%;
+  background: #8b5cf6;
+}
+
+.continue-time {
+  display: block;
+  color: #777777;
+  font-size: 10px;
+  margin-top: 8px;
+}
+
+.continue-button {
+  margin-top: 14px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 7px;
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+
+/* GEÇMİŞ */
+
+.watch-history-list {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(165px, 1fr));
+  gap: 15px;
+}
+
+.history-card {
+  background: #0b0b10;
+  border: 1px solid #1c1b23;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.history-cover {
+  height: 110px;
+  background-size: cover;
+  background-position: center;
+}
+
+.history-info {
+  padding: 12px;
+}
+
+.history-info strong,
+.history-info span {
+  display: block;
+}
+
+.history-info span {
+  color: #777777;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.clear-history-button {
+  background: none;
+  border: 1px solid #292532;
+  color: #888888;
+  padding: 7px 10px;
+  border-radius: 6px;
+}
+
+
+/* ANİME DETAY */
+
+.anime-detail {
+  display: flex;
+  gap: 28px;
+  margin: 30px 0 55px;
+}
+
+.anime-detail-cover {
+  width: 240px;
+  min-width: 240px;
+  height: 340px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.anime-detail-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.anime-detail-info h1 {
+  font-size: 38px;
+  margin: 7px 0;
+}
+
+.anime-detail-info p {
+  max-width: 650px;
+  color: #777777;
+  line-height: 1.7;
+}
+
+.anime-stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.anime-stats div {
+  min-width: 110px;
+  padding: 13px;
+  background: #09090d;
+  border: 1px solid #191822;
+  border-radius: 7px;
+}
+
+.anime-stats small,
+.anime-stats strong {
+  display: block;
+}
+
+
+/* SEZON */
+
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.season-card {
+  display: flex;
+  height: 220px;
+  background: #09090b;
+  border: 1px solid #1c1c22;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.season-cover {
+  width: 70%;
+  padding: 16px;
+  background-size: cover !important;
+  background-position: center top !important;
+}
+
+.season-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #6d28d9;
+  font-weight: 700;
+}
+
+.season-info {
+  width: 30%;
+  padding: 20px 15px;
+  background: #050507;
+}
+
+.season-info h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+
+/* PAGE */
+
+.page {
+  display: none;
+  min-height: 75vh;
+}
+
+.back-button {
+  padding: 8px 14px;
+  background: #111018;
+  color: #ffffff;
+  border: 1px solid #222030;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.page-header {
+  margin-top: 25px;
+}
+
+
+/* BÖLÜMLER */
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.episode-item {
+  padding: 14px;
+  background: #09090d;
+  border: 1px solid #191822;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.episode-item:hover {
+  border-color: #8b5cf6;
+  color: #a78bfa;
+}
+
+
+/* DISCORD */
+
+.info-section {
+  padding: 25px;
+  background: #09090d;
+  border: 1px solid #191822;
+  border-radius: 8px;
+}
+
+.info-section p {
+  color: #777777;
+  line-height: 1.6;
+}
+
+
+/* VIDEO */
+
+.player-box {
+  margin-top: 25px;
+  padding: 12px;
+  background: #09090d;
+  border: 1px solid #191822;
+  border-radius: 8px;
+}
+
+.player-box video,
+.player-box iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 6px;
+  background: #000000;
+}
+
+.player-box iframe {
+  aspect-ratio: 16 / 9;
+}
+
+.fullscreen-button {
+  margin-top: 10px;
+  padding: 9px 15px;
+  background: #111018;
+  color: #ffffff;
+  border: 1px solid #292637;
+  border-radius: 6px;
+}
+
+
+/* BÖLÜM ALT */
+
+.episode-extra-area {
+  max-width: 1000px;
+  margin: 25px auto 70px;
+}
+
+.episode-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 45px;
+}
+
+.episode-navigation button {
+  padding: 11px 16px;
+  background: #0e0e14;
+  color: #ffffff;
+  border: 1px solid #24232d;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.episode-navigation button:disabled {
+  opacity: .3;
+}
+
+
+/* YORUMLAR */
+
+.comments-section {
+  padding-top: 32px;
+  border-top: 1px solid #1d1c23;
+}
+
+.comments-header h2 {
+  margin: 5px 0 20px;
+}
+
+.comment-editor {
+  display: flex;
+  gap: 13px;
+  padding: 16px;
+  background: #0b0b10;
+  border: 1px solid #1f1e27;
+  border-radius: 12px;
+}
+
+.comment-avatar,
+.comment-user-avatar {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #7134b5;
+}
+
+.comment-editor-main {
+  flex: 1;
+}
+
+.comment-editor textarea {
+  width: 100%;
+  min-height: 80px;
+  background: transparent;
+  color: #ffffff;
+  border: 0;
+  outline: 0;
+  resize: vertical;
+}
+
+.comment-editor-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.comment-tools {
+  display: flex;
+  gap: 8px;
+}
+
+.comment-tool-button,
+.send-comment-button {
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.comment-tool-button {
+  background: #111117;
+  color: #aaaaaa;
+  border: 1px solid #24232c;
+}
+
+.comment-tool-button.active {
+  border-color: #7c3aed;
+  color: #b98aff;
+}
+
+.send-comment-button {
+  border: 0;
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.comment-image-preview-container {
+  position: relative;
+  width: max-content;
+  margin-top: 12px;
+}
+
+.comment-image-preview-container img {
+  max-width: 230px;
+  max-height: 180px;
+  border-radius: 8px;
+}
+
+.remove-comment-image {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0,0,0,.8);
+  color: #ffffff;
+}
+
+.comment-item {
+  display: flex;
+  gap: 12px;
+  padding: 18px 3px;
+  border-bottom: 1px solid #18171e;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-user-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.comment-username {
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.comment-date {
+  color: #666666;
+  font-size: 9px;
+}
+
+.comment-text {
+  color: #c3c0c8;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.comment-uploaded-image {
+  display: block;
+  max-width: 420px;
+  max-height: 350px;
+  margin-top: 12px;
+  border-radius: 9px;
+}
+
+.spoiler-box {
+  min-height: 65px;
+  padding: 12px;
+  display: grid;
+  place-items: center;
+  background: #121016;
+  color: #b991ba;
+  border: 1px solid #4a354f;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.spoiler-box.revealed {
+  display: block;
+  color: #c8c4cb;
+}
+
+
+/* REZERO KAPAKLARI */
+
+.rezero-season-1 {
+  background:
+    linear-gradient(
+      rgba(113,56,125,.65),
+      rgba(92,43,102,.75)
+    ),
+    url('https://i.pinimg.com/736x/db/3d/db/db3ddbe641f0868455ee9eb549b1e44b.jpg');
+}
+
+.rezero-season-2 {
+  background:
+    linear-gradient(
+      rgba(42,61,92,.65),
+      rgba(30,42,63,.75)
+    ),
+    url('https://i.ytimg.com/vi/IL9clD2wuU0/maxresdefault.jpg');
+}
+
+.rezero-season-3 {
+  background:
+    linear-gradient(
+      rgba(163,168,193,.65),
+      rgba(88,91,115,.75)
+    ),
+    url('https://miro.medium.com/v2/resize:fit:2000/1*hZFn7WrXsXfjJkQUU-kJkg.jpeg');
+}
+
+.rezero-season-4 {
+  background:
+    linear-gradient(
+      rgba(45,24,54,.65),
+      rgba(13,6,17,.75)
+    ),
+    url('https://avatars.mds.yandex.net/i?id=4178d6e959399c052ffe99b648f8cf3f6f9c9a88-12752860-images-thumbs&n=13');
+}
+
+
+/* FOOTER */
+
+footer {
+  margin-top: 80px;
+  padding: 30px;
+  text-align: center;
+  border-top: 1px solid #121118;
+}
+
+footer p {
+  color: #444444;
+  font-size: 12px;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  .news-grid,
+  .season-grid,
+  .episode-list,
+  .anime-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* MOBİL */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 11px 12px;
+    gap: 10px;
+  }
+
+  .nav-icons {
+    margin-left: auto;
+  }
+
+  .nav-icons > i {
+    display: none;
+  }
+
+  .nav-links {
+    grid-column: 1 / 3;
+    width: 100%;
+    margin: 0;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .nav-links a {
+    font-size: 9px;
+  }
+
+  .login-button span,
+  .profile-button > span#navbarUsername {
+    display: none;
+  }
+
+  .search-box {
+    top: 105px;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+  }
+
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .anime-detail {
+    flex-direction: column;
+  }
+
+  .anime-detail-cover {
+    width: 190px;
+    min-width: 190px;
+    height: 270px;
+  }
+
+  .continue-card {
+    display: block;
+  }
+
+  .continue-cover {
+    width: 100%;
+    height: 170px;
+  }
+
+  .watch-history-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .comment-tool-button span {
+    display: none;
+  }
+
+  .comment-uploaded-image {
+    max-width: 100%;
+  }
+
+}
+/* =====================================================
+   NEMUSUB PROFİL SAYFASI
+===================================================== */
+
+#profilePage {
+  width: 90%;
+  max-width: 1200px;
+  margin: 45px auto 80px;
+}
+
+
+/* PROFİL ANA KUTUSU */
+
+.profile-page-wrapper {
+  width: 100%;
+  max-width: 1050px;
+  margin: 25px auto 0;
+  background: #09090d;
+  border: 1px solid #1f1d29;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =====================================================
+   BANNER
+===================================================== */
+
+.profile-banner {
+  position: relative;
+
+  width: 100%;
+  height: 300px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 5, 8, 0.08),
+      rgba(5, 5, 8, 0.35)
+    ),
+    linear-gradient(
+      135deg,
+      #211634,
+      #0f0b18
+    );
+
+  background-size: cover;
+  background-position: center;
+
+  border-bottom: 1px solid #24212d;
+}
+
+
+/* BANNER SAĞ ÜST KALEM */
+
+.banner-edit-button {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 10px;
+
+  background: rgba(8, 8, 12, 0.75);
+
+  backdrop-filter: blur(8px);
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  transition: 0.2s;
+}
+
+
+.banner-edit-button:hover {
+  background: #7c3aed;
+  border-color: #8b5cf6;
+  transform: scale(1.05);
+}
+
+
+/* =====================================================
+   PROFİL FOTOĞRAFI
+===================================================== */
+
+.profile-avatar-large {
+  position: absolute;
+
+  left: 38px;
+  bottom: -65px;
+
+  width: 135px;
+  height: 135px;
+
+  border-radius: 50%;
+
+  background: #111018;
+
+  border: 6px solid #09090d;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+
+  overflow: visible;
+
+  z-index: 10;
+}
+
+
+.profile-avatar-large img {
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+
+.profile-avatar-fallback {
+  position: absolute;
+
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4c1d95
+    );
+
+  color: #ffffff;
+
+  font-size: 42px;
+}
+
+
+/* PROFİL FOTOĞRAFI KAMERA */
+
+.avatar-edit-button {
+  position: absolute;
+
+  right: 2px;
+  bottom: 4px;
+
+  width: 37px;
+  height: 37px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border: 3px solid #09090d;
+
+  background: #7c3aed;
+
+  color: white;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  transition: 0.2s;
+}
+
+
+.avatar-edit-button:hover {
+  background: #8b5cf6;
+  transform: scale(1.08);
+}
+
+
+/* =====================================================
+   PROFİL BİLGİLERİ
+===================================================== */
+
+.profile-info-card {
+  padding:
+    82px
+    38px
+    38px;
+
+  background: #09090d;
+}
+
+
+/* NICK + KALEM */
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.profile-name-row h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  word-break: break-word;
+}
+
+
+.nickname-edit-button {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #77727f;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.nickname-edit-button:hover {
+  background: #17131f;
+  color: #b58aff;
+}
+
+
+/* @KULLANICI */
+
+.profile-username-tag {
+  margin:
+    6px
+    0
+    26px;
+
+  color: #77727f;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   HAKKIMDA
+===================================================== */
+
+.profile-bio-area {
+  max-width: 700px;
+}
+
+
+.profile-bio-area label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #9a96a3;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+.profile-bio-area textarea {
+  width: 100%;
+  min-height: 115px;
+
+  padding: 15px;
+
+  resize: vertical;
+
+  border: 1px solid #25222f;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #050508;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  transition: 0.2s;
+}
+
+
+.profile-bio-area textarea::placeholder {
+  color: #55515e;
+}
+
+
+.profile-bio-area textarea:focus {
+  border-color: #7c3aed;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(124, 58, 237, 0.1);
+}
+
+
+/* =====================================================
+   KAYDET BUTONU
+===================================================== */
+
+.profile-save-button {
+  margin-top: 22px;
+
+  min-width: 125px;
+  height: 42px;
+
+  padding: 0 17px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #7c3aed;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.profile-save-button:hover {
+  background: #8b5cf6;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 9px 25px
+    rgba(124, 58, 237, 0.24);
+}
+
+
+.profile-save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =====================================================
+   NAVBAR PROFİL FOTOĞRAFI
+===================================================== */
+
+.profile-avatar {
+  overflow: hidden;
+}
+
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+
+/* =====================================================
+   PROFİL MENÜSÜ KÜÇÜK DÜZELTMELER
+===================================================== */
+
+.profile-menu-head {
+  padding: 12px 10px;
+}
+
+
+.profile-menu-head strong {
+  color: #ffffff;
+
+  font-size: 13px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.profile-menu button {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border-radius: 6px;
+}
+
+
+.profile-menu button i {
+  width: 17px;
+
+  text-align: center;
+
+  color: #817b8b;
+}
+
+
+.profile-menu button:hover i {
+  color: #b58aff;
+}
+
+
+.profile-menu .logout-button i {
+  color: #d08a8a;
+}
+
+
+/* =====================================================
+   YÜKLEME DURUMU
+===================================================== */
+
+.profile-uploading {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+
+.profile-uploading::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(5, 5, 8, 0.35);
+
+  z-index: 15;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .profile-banner {
+    height: 250px;
+  }
+
+
+  .profile-avatar-large {
+    width: 120px;
+    height: 120px;
+
+    left: 28px;
+    bottom: -58px;
+  }
+
+
+  .profile-info-card {
+    padding:
+      75px
+      28px
+      30px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBİL
+===================================================== */
+
+@media (max-width: 700px) {
+
+  #profilePage {
+    width: 94%;
+    margin-top: 30px;
+  }
+
+
+  .profile-page-wrapper {
+    border-radius: 13px;
+  }
+
+
+  .profile-banner {
+    height: 200px;
+  }
+
+
+  .banner-edit-button {
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+  }
+
+
+  .profile-avatar-large {
+    width: 105px;
+    height: 105px;
+
+    left: 18px;
+    bottom: -50px;
+
+    border-width: 5px;
+  }
+
+
+  .avatar-edit-button {
+    width: 33px;
+    height: 33px;
+  }
+
+
+  .profile-info-card {
+    padding:
+      65px
+      18px
+      25px;
+  }
+
+
+  .profile-name-row h1 {
+    font-size: 24px;
+  }
+
+
+  .nickname-edit-button {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .profile-bio-area textarea {
+    min-height: 105px;
+  }
+
+
+  .profile-save-button {
+    width: 100%;
+  }
+
+}
+/* =====================================================
+   NEMUSUB - MOBİL NAVBAR DÜZELTMESİ
+===================================================== */
+
+@media (max-width: 700px) {
+
+  /* NAVBAR */
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    min-height: auto;
+
+    padding: 12px 14px;
+
+    gap: 10px;
+  }
+
+
+  /* LOGO */
+  .logo {
+    order: 1;
+
+    flex: 1;
+
+    min-width: 0;
+  }
+
+
+  .logo-country {
+    font-size: 10px;
+  }
+
+
+  /* ARAMA + PROFİL */
+  .nav-icons {
+    order: 2;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+
+  .search-button {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .profile-button {
+    height: 40px;
+
+    padding: 4px 9px 4px 5px;
+  }
+
+
+  .profile-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  /* MOBİLDE KULLANICI ADINI GİZLE */
+  .profile-button > span#navbarUsername {
+    display: none;
+  }
+
+
+  /* MENÜ LİNKLERİ ALT SATIRA */
+  .nav-links {
+    order: 3;
+
+    flex-basis: 100%;
+
+    width: 100%;
+
+    margin: 2px 0 0;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    gap: 5px;
+  }
+
+
+  .nav-links a {
+    min-width: 0;
+
+    padding: 8px 3px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+  }
+
+
+  .nav-links a i {
+    font-size: 11px;
+  }
+
+
+  /* PROFİL AÇILIR MENÜSÜ */
+  .profile-area {
+    position: static;
+  }
+
+
+  .profile-menu {
+    position: absolute;
+
+    top: 62px;
+
+    right: 12px;
+    left: auto;
+
+    width: min(
+      280px,
+      calc(100vw - 24px)
+    );
+
+    max-width: calc(100vw - 24px);
+
+    z-index: 99999;
+  }
+
+
+  /* ARAMA KUTUSU */
+  .search-box {
+    top: 125px;
+
+    left: 12px;
+    right: 12px;
+
+    width: auto;
+
+    max-width: none;
+  }
+
+
+  /* HERO NAVBAR ALTINDA EZİLMESİN */
+  .hero {
+    min-height: 520px;
+
+    padding:
+      55px
+      7%;
+  }
+
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+
+  .hero-buttons {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .hero-buttons .button {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+}
+
+
+/* DAHA KÜÇÜK TELEFONLAR */
+
+@media (max-width: 420px) {
+
+  .navbar {
+    padding:
+      10px
+      10px;
+  }
+
+
+  .nav-links a {
+    font-size: 9px;
+
+    gap: 3px;
+  }
+
+
+  .logo {
+    font-size: 14px;
+  }
+
+
+  .profile-menu {
+    right: 10px;
+
+    width: calc(
+      100vw - 20px
+    );
+  }
+
+
+  .hero h1 {
+    font-size: 29px;
+  }
+
+}

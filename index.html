@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nemusub</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+</head>
+
+<body>
+
+<header class="navbar">
+
+  <a
+    href="#"
+    class="logo"
+    onclick="goHome(); return false;"
+  >
+    <span class="purple-text">NEMU</span>
+    <span class="logo-dash">—</span>
+    <span class="logo-country">SUB</span>
+  </a>
+
+
+  <nav class="nav-links">
+
+    <a
+      href="#"
+      onclick="goHome(); return false;"
+    >
+      <i class="fa-regular fa-compass"></i>
+      <span>Ana Sayfa</span>
+    </a>
+
+    <a href="#haberler">
+      <i class="fa-regular fa-square"></i>
+      <span>Haberler</span>
+    </a>
+
+    <a href="#animeler">
+      <i class="fa-solid fa-tv"></i>
+      <span>Animeler</span>
+    </a>
+
+    <a
+      href="https://discord.gg/rezeroturkiye"
+      target="_blank"
+    >
+      <i class="fa-brands fa-discord"></i>
+      <span>Discord</span>
+    </a>
+
+  </nav>
+
+
+  <div class="nav-icons">
+
+    <i class="fa-regular fa-circle-dot"></i>
+    <i class="fa-brands fa-x-twitter"></i>
+    <i class="fa-solid fa-play"></i>
+
+    <button
+      class="search-button"
+      onclick="toggleSearch()"
+      aria-label="Anime ara"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+
+    <button
+      id="loginButton"
+      class="login-button"
+      onclick="openLoginModal()"
+    >
+      <i class="fa-regular fa-user"></i>
+      <span>Giriş Yap</span>
+    </button>
+
+
+    <div
+      id="profileArea"
+      class="profile-area"
+      style="display:none;"
+    >
+
+      <button
+        class="profile-button"
+        onclick="toggleProfileMenu()"
+      >
+        <span class="profile-avatar">
+          <i class="fa-solid fa-user"></i>
+        </span>
+
+        <span id="navbarUsername">
+          Kullanıcı
+        </span>
+
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+
+      <div
+        id="profileMenu"
+        class="profile-menu"
+      >
+
+        <div class="profile-menu-head">
+
+          <strong id="profileMenuUsername">
+            Kullanıcı
+          </strong>
+
+        </div>
+
+
+        <button onclick="scrollToContinueWatching()">
+          <i class="fa-solid fa-play"></i>
+          Kaldığın Yerden Devam Et
+        </button>
+
+
+        <button onclick="scrollToWatchHistory()">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          İzleme Geçmişi
+        </button>
+
+
+        <button onclick="openProfilePage()">
+          <i class="fa-solid fa-user-gear"></i>
+          Profil Ayarları
+        </button>
+
+
+        <button
+          class="logout-button"
+          onclick="logoutUser()"
+        >
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Çıkış Yap
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<!-- ARAMA -->
+
+<div
+  id="searchBox"
+  class="search-box"
+>
+
+  <div class="search-container">
+
+    <input
+      id="animeSearchInput"
+      type="text"
+      placeholder="Anime ara..."
+      autocomplete="off"
+      oninput="searchAnime()"
+    >
+
+    <button
+      class="search-close"
+      onclick="toggleSearch()"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+  <div
+    id="searchResults"
+    class="search-results"
+  ></div>
+
+</div>
+
+
+
+<!-- GİRİŞ / KAYIT -->
+
+<div
+  id="loginModal"
+  class="login-modal"
+>
+
+  <div
+    class="login-overlay"
+    onclick="closeLoginModal()"
+  ></div>
+
+
+  <div class="login-card">
+
+    <button
+      class="login-close"
+      onclick="closeLoginModal()"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+
+    <div class="auth-tabs">
+
+      <button
+        id="loginTabButton"
+        class="auth-tab active"
+        onclick="showLoginTab()"
+      >
+        Giriş Yap
+      </button>
+
+      <button
+        id="registerTabButton"
+        class="auth-tab"
+        onclick="showRegisterTab()"
+      >
+        Kayıt Ol
+      </button>
+
+    </div>
+
+
+    <div
+      id="loginForm"
+      class="auth-form"
+    >
+
+      <h2>Tekrar hoş geldin</h2>
+
+      <p>
+        İzleme geçmişini kaydet,
+        kaldığın yerden devam et.
+      </p>
+
+      <label>E-posta</label>
+
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="E-posta adresin"
+      >
+
+      <label>Şifre</label>
+
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="Şifren"
+      >
+
+      <button
+        class="auth-main-button"
+        onclick="loginUser()"
+      >
+        Giriş Yap
+      </button>
+
+
+      <button
+        class="google-button"
+        onclick="loginWithGoogle()"
+      >
+        <i class="fa-brands fa-google"></i>
+        Google ile Devam Et
+      </button>
+
+
+      <p class="auth-switch">
+
+        Hesabın yok mu?
+
+        <button onclick="showRegisterTab()">
+          Kayıt Ol
+        </button>
+
+      </p>
+
+    </div>
+
+
+    <div
+      id="registerForm"
+      class="auth-form"
+      style="display:none;"
+    >
+
+      <h2>Hesap oluştur</h2>
+
+      <p>
+        Nemusub hesabını oluştur.
+      </p>
+
+
+      <label>Kullanıcı Adı</label>
+
+      <input
+        id="registerUsername"
+        type="text"
+        placeholder="Kullanıcı adın"
+      >
+
+
+      <label>E-posta</label>
+
+      <input
+        id="registerEmail"
+        type="email"
+        placeholder="E-posta adresin"
+      >
+
+
+      <label>Şifre</label>
+
+      <input
+        id="registerPassword"
+        type="password"
+        placeholder="Şifren"
+      >
+
+
+      <label>Şifre Tekrar</label>
+
+      <input
+        id="registerPasswordAgain"
+        type="password"
+        placeholder="Şifreni tekrar yaz"
+      >
+
+
+      <button
+        class="auth-main-button"
+        onclick="registerUser()"
+      >
+        Kayıt Ol
+      </button>
+
+
+      <button
+        class="google-button"
+        onclick="loginWithGoogle()"
+      >
+        <i class="fa-brands fa-google"></i>
+        Google ile Kayıt Ol
+      </button>
+
+
+      <p class="auth-switch">
+
+        Zaten hesabın var mı?
+
+        <button onclick="showLoginTab()">
+          Giriş Yap
+        </button>
+
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ANA SAYFA -->
+
+<main id="homePage">
+
+  <section class="hero">
+
+    <div class="hero-wallpaper"></div>
+
+    <div class="hero-content">
+
+      <h1>Nemusub</h1>
+
+      <h2>
+        İsekai Anime Arşivi
+      </h2>
+
+      <p>
+        Sevdiğin isekai animelerini keşfet,
+        <br>
+        sezonlarını incele ve bölümlerine ulaş.
+      </p>
+
+
+      <div class="hero-buttons">
+
+        <a
+          href="#animeler"
+          class="button primary"
+        >
+          <i class="fa-solid fa-tv"></i>
+          Animeleri Keşfet
+        </a>
+
+
+        <a
+          href="https://discord.gg/rezeroturkiye"
+          target="_blank"
+          class="button secondary"
+        >
+          <i class="fa-brands fa-discord"></i>
+          Discord'a Katıl
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- DEVAM ET -->
+
+  <section
+    id="continueWatchingSection"
+    class="section"
+    style="display:none;"
+  >
+
+    <div class="section-heading">
+
+      <div>
+        <span>İZLEMEYE DEVAM ET</span>
+        <h2>Kaldığın Yerden Devam Et</h2>
+      </div>
+
+    </div>
+
+    <div
+      id="continueWatchingCard"
+      class="continue-card"
+    ></div>
+
+  </section>
+
+
+
+  <!-- GEÇMİŞ -->
+
+  <section
+    id="watchHistorySection"
+    class="section"
+    style="display:none;"
+  >
+
+    <div class="section-heading">
+
+      <div>
+        <span>SON İZLEDİKLERİN</span>
+        <h2>İzleme Geçmişi</h2>
+      </div>
+
+      <button
+        class="clear-history-button"
+        onclick="clearWatchHistory()"
+      >
+        Geçmişi Temizle
+      </button>
+
+    </div>
+
+    <div
+      id="watchHistoryList"
+      class="watch-history-list"
+    ></div>
+
+  </section>
+
+
+
+  <!-- HABERLER -->
+
+  <section
+    id="haberler"
+    class="section"
+  >
+
+    <div class="section-heading">
+
+      <div>
+        <span>GÜNCEL</span>
+        <h2>Haberler</h2>
+      </div>
+
+    </div>
+
+
+    <div class="news-grid">
+
+      <article class="news-card">
+
+        <div class="news-image">
+          NEMUSUB
+        </div>
+
+        <div class="news-content">
+
+          <small>Güncel</small>
+
+          <h3>
+            Yeni Anime İçerikleri
+          </h3>
+
+          <p>
+            Nemusub anime arşivi yeni serilerle
+            genişlemeye devam ediyor.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="news-card">
+
+        <div class="news-image">
+          ANİME
+        </div>
+
+        <div class="news-content">
+
+          <small>Yeni</small>
+
+          <h3>
+            Yeni Sezonlar
+          </h3>
+
+          <p>
+            Sevdiğin animelerin sezon ve bölümlerini
+            Nemusub üzerinden takip edebilirsin.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="news-card">
+
+        <div class="news-image">
+          NEMU
+        </div>
+
+        <div class="news-content">
+
+          <small>Nemusub</small>
+
+          <h3>
+            Anime Arşivi
+          </h3>
+
+          <p>
+            İsekai odaklı anime arşivi
+            geliştirilmeye devam ediyor.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ANİMELER -->
+
+  <section
+    id="animeler"
+    class="section"
+  >
+
+    <div class="section-heading">
+
+      <div>
+        <span>ANİME</span>
+        <h2>İsekai Animeleri</h2>
+      </div>
+
+    </div>
+
+
+    <div
+      id="animeList"
+      class="anime-grid"
+    ></div>
+
+  </section>
+
+
+
+  <!-- DISCORD -->
+
+  <section class="info-section">
+
+    <span>TOPLULUK</span>
+
+    <h2>Discord</h2>
+
+    <p>
+      Nemusub topluluğuna katılabilir,
+      anime hakkında konuşabilir ve
+      yeni içerikleri takip edebilirsin.
+    </p>
+
+    <a
+      href="https://discord.gg/rezeroturkiye"
+      target="_blank"
+      class="button primary"
+    >
+      <i class="fa-brands fa-discord"></i>
+      Discord'a Katıl
+    </a>
+
+  </section>
+
+</main>
+
+
+
+<!-- PROFİL SAYFASI -->
+
+<section
+  id="profilePage"
+  class="page"
+>
+
+  <button
+    class="back-button"
+    onclick="goHome()"
+  >
+    ← Ana Sayfa
+  </button>
+
+
+  <div class="profile-page-wrapper">
+
+    <!-- BANNER -->
+
+    <div
+      id="profileBanner"
+      class="profile-banner"
+    >
+
+      <button
+        class="banner-edit-button"
+        onclick="document.getElementById('profileBannerInput').click()"
+        aria-label="Banner değiştir"
+      >
+        <i class="fa-solid fa-pen"></i>
+      </button>
+
+
+      <input
+        id="profileBannerInput"
+        type="file"
+        accept="image/*"
+        hidden
+        onchange="changeProfileBanner(event)"
+      >
+
+
+      <!-- PROFİL FOTOĞRAFI -->
+
+      <div class="profile-avatar-large">
+
+        <img
+          id="profileAvatarImage"
+          src=""
+          alt="Profil fotoğrafı"
+        >
+
+
+        <div
+          id="profileAvatarFallback"
+          class="profile-avatar-fallback"
+        >
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+
+        <button
+          class="avatar-edit-button"
+          onclick="document.getElementById('profileAvatarInput').click()"
+          aria-label="Profil fotoğrafını değiştir"
+        >
+          <i class="fa-solid fa-camera"></i>
+        </button>
+
+
+        <input
+          id="profileAvatarInput"
+          type="file"
+          accept="image/*"
+          hidden
+          onchange="changeProfileAvatar(event)"
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- PROFİL BİLGİLERİ -->
+
+    <div class="profile-info-card">
+
+      <div class="profile-name-row">
+
+        <h1 id="profileNickname">
+          Kullanıcı
+        </h1>
+
+
+        <button
+          class="nickname-edit-button"
+          onclick="editProfileNickname()"
+          aria-label="Kullanıcı adını değiştir"
+        >
+          <i class="fa-solid fa-pen"></i>
+        </button>
+
+      </div>
+
+
+      <p
+        id="profileUsernameTag"
+        class="profile-username-tag"
+      >
+        @kullanici
+      </p>
+
+
+      <div class="profile-bio-area">
+
+        <label for="profileBio">
+          Hakkımda
+        </label>
+
+        <textarea
+          id="profileBio"
+          maxlength="160"
+          placeholder="Kendinden biraz bahset..."
+        ></textarea>
+
+      </div>
+
+
+      <button
+        class="profile-save-button"
+        onclick="saveProfile()"
+      >
+        <i class="fa-solid fa-floppy-disk"></i>
+        Kaydet
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ANİME SAYFASI -->
+
+<section
+  id="animePage"
+  class="page"
+>
+
+  <button
+    class="back-button"
+    onclick="goHome()"
+  >
+    ← Ana Sayfa
+  </button>
+
+
+  <div class="anime-detail">
+
+    <div class="anime-detail-cover">
+
+      <img
+        id="animePageCover"
+        src=""
+        alt=""
+      >
+
+    </div>
+
+
+    <div class="anime-detail-info">
+
+      <span>ANİME</span>
+
+      <h1 id="animePageTitle"></h1>
+
+      <p id="animePageDescription"></p>
+
+
+      <div class="anime-stats">
+
+        <div>
+
+          <small>SEZON</small>
+
+          <strong id="animeSeasonCount"></strong>
+
+        </div>
+
+
+        <div>
+
+          <small>BÖLÜM</small>
+
+          <strong id="animeEpisodeCount"></strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="section-heading">
+
+    <div>
+      <span>ANİME</span>
+      <h2>Sezonlar</h2>
+    </div>
+
+  </div>
+
+
+  <div
+    id="seasonList"
+    class="season-grid"
+  ></div>
+
+</section>
+
+
+
+<!-- SEZON SAYFASI -->
+
+<section
+  id="seasonPage"
+  class="page"
+>
+
+  <button
+    class="back-button"
+    onclick="backToAnime()"
+  >
+    ← Animeye Dön
+  </button>
+
+
+  <div class="page-header">
+
+    <span id="seasonAnimeName"></span>
+
+    <h1 id="seasonTitle"></h1>
+
+    <p id="seasonCount"></p>
+
+  </div>
+
+
+  <div
+    id="episodeList"
+    class="episode-list"
+  ></div>
+
+</section>
+
+
+
+<!-- VIDEO -->
+
+<section
+  id="videoPage"
+  class="page"
+>
+
+  <button
+    class="back-button"
+    onclick="backToSeason()"
+  >
+    ← Bölümlere Dön
+  </button>
+
+
+  <div class="page-header">
+
+    <span>BÖLÜM</span>
+
+    <h1 id="videoTitle"></h1>
+
+  </div>
+
+
+  <div class="player-box">
+
+    <video
+      id="videoPlayer"
+      controls
+      playsinline
+      preload="metadata"
+    >
+
+      <source
+        id="videoSource"
+        src=""
+        type="video/mp4"
+      >
+
+    </video>
+
+
+    <iframe
+      id="youtubePlayer"
+      style="display:none;"
+      allowfullscreen
+    ></iframe>
+
+
+    <iframe
+      id="googleVidsPlayer"
+      style="display:none;"
+      allowfullscreen
+    ></iframe>
+
+
+    <button
+      class="fullscreen-button"
+      onclick="toggleFullscreen()"
+    >
+      <i class="fa-solid fa-expand"></i>
+      Tam Ekran
+    </button>
+
+
+    <p id="videoMessage"></p>
+
+  </div>
+
+
+
+  <div class="episode-extra-area">
+
+
+    <div class="episode-navigation">
+
+      <button
+        id="previousEpisodeButton"
+        onclick="goPreviousEpisode()"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+        Önceki Bölüm
+      </button>
+
+
+      <button
+        id="nextEpisodeButton"
+        onclick="goNextEpisode()"
+      >
+        Sonraki Bölüm
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+    </div>
+
+
+
+    <!-- YORUMLAR -->
+
+    <section class="comments-section">
+
+      <div class="comments-header">
+
+        <span>TOPLULUK</span>
+
+        <h2>
+          Yorumlar
+          <small id="commentCount">0</small>
+        </h2>
+
+      </div>
+
+
+      <div class="comment-editor">
+
+        <div class="comment-avatar">
+
+          <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+        <div class="comment-editor-main">
+
+          <textarea
+            id="commentInput"
+            maxlength="1000"
+            placeholder="Bu bölüm hakkında ne düşünüyorsun?"
+          ></textarea>
+
+
+          <div
+            id="commentImagePreviewContainer"
+            class="comment-image-preview-container"
+            style="display:none;"
+          >
+
+            <img
+              id="commentImagePreview"
+              src=""
+              alt="Yorum resmi"
+            >
+
+
+            <button
+              class="remove-comment-image"
+              onclick="removeCommentImage()"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+
+          </div>
+
+
+          <div class="comment-editor-bottom">
+
+            <div class="comment-tools">
+
+              <label class="comment-tool-button">
+
+                <i class="fa-regular fa-image"></i>
+
+                <span>Resim</span>
+
+                <input
+                  id="commentImageInput"
+                  type="file"
+                  accept="image/*"
+                  onchange="previewCommentImage(event)"
+                  hidden
+                >
+
+              </label>
+
+
+              <button
+                id="spoilerButton"
+                class="comment-tool-button"
+                onclick="toggleCommentSpoiler()"
+              >
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>Spoiler</span>
+
+              </button>
+
+            </div>
+
+
+            <button
+              class="send-comment-button"
+              onclick="submitComment()"
+            >
+
+              Gönder
+
+              <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="commentsList"></div>
+
+    </section>
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  <strong>
+    <span class="purple-text">Nemu</span>sub
+  </strong>
+
+  <p>
+    © 2026 Nemusub • Anime arşiv projesi.
+  </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
